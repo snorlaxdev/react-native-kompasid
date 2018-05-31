@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
-import { createStackNavigator, createBottomTabNavigator, NavigationActions } from "react-navigation";
+import { Image, StyleSheet } from "react-native";
+import { Icon } from "native-base";
+import { createBottomTabNavigator } from "react-navigation";
 
 import HomeStack from "./AppHome/index";
 import EpaperStack from "./AppEpaper/index";
@@ -9,30 +10,49 @@ import AppSearch from "./AppSearch/AppSearch";
 
 
 const BottomNavigation = createBottomTabNavigator({
-    "Kompas.id": HomeStack,
-    "ePaper": EpaperStack,
-    "Buku": BookStack
+    "Kompas.id": {
+        screen: HomeStack,
+        navigationOptions: {
+            tabBarIcon: (focused) => (
+                <Icon style={focused ? icon.active : icon.inactive} name="md-phone-portrait"/>
+            )
+        }
+    },
+    "ePaper": {
+        screen: EpaperStack,
+        navigationOptions: {
+            tabBarIcon: (focused) => (
+                <Icon color={focused ? "blue" : "black"} name="md-paper"/>
+            )
+        }
+    },
+    "Buku": {
+        screen: BookStack,
+        navigationOptions: {
+            tabBarIcon: () => (
+                <Icon name="md-book"/>
+            )
+        }
+    }
 },
 {
-    navigationOptions: ({ navigation }) => ({
-        tabBarIcon: () => {
-            const { routeName } = navigation.state;
-            let iconName;
-            if (routeName == "Kompas.id") {
-                return (
-                    <Image source={require('../../assets/images/ic_menu_kompasid.png')} style={{width: 32, height: 32}}/>
-                );
-            } else if (routeName == "ePaper") {
-                return (
-                    <Image source={require('../../assets/images/ic_menu_epaper.png')} style={{width: 32, height: 32}}/>
-                );
-            } else if (routeName == "Buku") {
-                return (
-                    <Image source={require('../../assets/images/ic_menu_buku.png')} style={{width: 32, height: 32}}/>
-                );
-            }
+    tabBarOptions: {
+        style: {
+            height: 60
+        },
+        labelStyle: {
+            fontSize: 14
         }
-    })
+    }
+});
+
+const icon = StyleSheet.create({
+    active: {
+        color: 'blue'
+    },
+    inactive: {
+        color: 'black'
+    }
 });
 
 export default class AppScreens extends Component{

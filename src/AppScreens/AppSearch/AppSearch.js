@@ -11,18 +11,14 @@ class AppSearch extends Component{
         return(
             <Container>
                 <Header searchBar style={{backgroundColor: '#00599A'}}>
-                    <Left>
-                        <Button transparent onPress={() => this.props.navigation.goBack()}>
-                            <Icon name='arrow-back'/>
-                        </Button>
-                    </Left>
-                    <Left>
-                        <Button transparent>
-                            <Icon name='ios-search'/>
-                        </Button>
-                    </Left>
                     <Item>
-                        <Input style={{backgroundColor: '#00599A', color: '#fff'}} placeholder='Cari...' placeholderTextColor='#a9a9a9'/>
+                        <Button style={{backgroundColor: '#00599A'}} transparent onPress={() => this.props.navigation.goBack()}>
+                            <Icon style={{backgroundColor: '#00599A', color: '#fff'}} name='arrow-back'/>
+                        </Button>
+                        <Button style={{backgroundColor: '#00599A'}} transparent onPress={() => this.props.navigation.goBack()}>
+                            <Icon style={{backgroundColor: '#00599A', color: '#fff'}} name='ios-search'/>
+                        </Button>
+                        <Input style={{backgroundColor: '#00599A', color: '#fff', width: 'auto'}} placeholder='Cari...' placeholderTextColor='#a9a9a9'/>
                     </Item>
                 </Header>
             </Container>

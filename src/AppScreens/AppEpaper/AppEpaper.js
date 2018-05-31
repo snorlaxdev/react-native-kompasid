@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import { Image, TouchableOpacity } from "react-native";
 import { Container, Content, View, Button, Card, CardItem, Left, Body, Right, Icon, Text } from "native-base";
 import { Grid, Col, Row } from "react-native-easy-grid";
-import { withNavigation } from "react-navigation";
+import { withNavigation, NavigationActions } from "react-navigation";
 
 import AppHeader from '../../AppHeader/AppHeader';
 
 class AppEpaper extends Component{
+    static navigationOptions = {
+        tabBarVisible: false
+    }
+
     constructor(props){
         super(props);
         this.state = {
@@ -59,7 +63,8 @@ class AppEpaper extends Component{
                     description: "This is a test",
                     publish_date: ""
                 },
-            ]
+            ],
+            tabBarVisible: true
         }
     }
 

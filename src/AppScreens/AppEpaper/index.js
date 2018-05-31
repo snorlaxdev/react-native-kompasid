@@ -5,12 +5,13 @@ import AppSearch from "../AppSearch/AppSearch";
 import AppEpaperItem from "../AppEpaperItem/AppEpaperItem";
 
 const EpaperStack = createStackNavigator({
-    "ePaper" : AppEpaper,
-    "Search" : AppSearch,
-    "item" : AppEpaperItem
+    "ePaper" : { screen: AppEpaper },
+    "Search" : { screen: AppSearch },
+    "item" : { screen: AppEpaperItem }
 }, {
     initialRouteName: "ePaper",
     headerMode: "none",
+    mode: "modal"
 })
 
 export default EpaperStack;
